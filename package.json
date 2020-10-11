@@ -1,0 +1,19 @@
+{
+  "name": "masonry-test",
+  "version": "1.0.0",
+  "description": "Making a masonry layout.",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "chokidar": "^3.4.2",
+    "less": "^3.12.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npm run dev && npm run less:watch",
+    "dev": "browser-sync start -s -f index.html style.min.css",
+    "less:watch": "node less-watch.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

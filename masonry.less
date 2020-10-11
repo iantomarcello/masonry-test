@@ -1,0 +1,66 @@
+/*
+ *  CSS Masonry
+ *  Adapted from https://tobiasahlin.com/blog/masonry-with-css/
+ */
+
+.masonry(@gap, @cols) {
+  width: calc(100% + 10px);
+  margin-top: -@gap;
+  display: flex;
+  flex-flow: column wrap;
+  overflow: hidden;
+
+  & when (@cols < 4) {
+    &:before,
+    &:after {
+      content: "";
+      flex-basis: 100%;
+      width: 0;
+      order: calc(@cols - 1);
+      // margin: 0;
+    }
+
+    .break() {
+      display: none;
+    }
+  }
+
+  & when (@cols >= 4) {
+    .break() {
+      flex-basis: 100%;
+      width: 0;
+      margin: 0;
+
+      .nthLoop(@n) when (@n < @cols) {
+        &:nth-of-type(@{cols}n+@{n}) {
+          order: @n;
+        }
+        .nthLoop(@n + 1);
+      }
+      .nthLoop(1);
+      &:nth-of-type(@{cols}n) { order: @cols; }
+    }
+
+    &:before,
+    &:after {
+      content: "";
+    }
+  }
+
+
+  .brick() {
+    width: calc(100% / @cols - 10px);
+    flex-shrink: 0;
+    margin-right: @gap;
+    margin-top: @gap;
+
+    .nthLoop(@n) when (@n < @cols) {
+      &:nth-of-type(@{cols}n+@{n}) {
+        order: @n;
+      }
+      .nthLoop(@n + 1);
+    }
+    .nthLoop(1);
+    &:nth-of-type(@{cols}n) { order: @cols; }
+  }
+}
