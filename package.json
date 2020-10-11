@@ -2,7 +2,6 @@
   "name": "masonry-test",
   "version": "1.0.0",
   "description": "Making a masonry layout.",
-  "main": "index.js",
   "type": "module",
   "dependencies": {
     "chokidar": "^3.4.2",
@@ -14,6 +13,6 @@
     "dev": "browser-sync start -s -f index.html style.min.css",
     "less:watch": "node less-watch.js"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Ian Yong (iantomarcello)",
+  "license": "MIT"
 }
